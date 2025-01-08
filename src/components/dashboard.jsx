@@ -91,6 +91,13 @@ const Dashboard = ({ userName }) => {
           )}
         </div>
       </section>
+       {/* Messages */}
+          <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
+            <div style={{ backgroundColor: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+              <strong><h3>Messages</h3></strong><br />
+              <p>Note: Your portfolio is performing well. Keep growing! Portfolio entries may fluctuate as not updated properly yet.</p>
+            </div>
+          </section>
 
       {/* Transaction History */}
       <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
