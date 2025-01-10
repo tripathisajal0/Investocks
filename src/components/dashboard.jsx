@@ -40,7 +40,7 @@ const Dashboard = ({ userName }) => {
         // Get the most recent 10 transactions
         const recentTransactions = sortedTransactions.slice(0, 10);
 
-        setTransactionHistory(recentTransactions);
+        setTransactionHistory(sortedTransactions);
 
       } catch (error) {
         console.error('Error fetching data:', error);
