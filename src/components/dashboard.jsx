@@ -1,6 +1,5 @@
 
 
-
 import React, { useState, useEffect } from 'react';
 import './dash.css'; // Add CSS for styling
 import Popup from './popup'; // Import the Popup component
@@ -40,7 +39,7 @@ const Dashboard = ({ userName }) => {
         // Get the most recent 10 transactions
         const recentTransactions = sortedTransactions.slice(0, 10);
 
-        setTransactionHistory(sortedTransactions);
+        setTransactionHistory(recentTransactions);
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -64,19 +63,28 @@ const Dashboard = ({ userName }) => {
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Header */}
-      <header style={{ backgroundColor: '#007bff', color: '#fff', padding: '10px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>Welcome, {userName}</h2>
-        <div>
-          <button onClick={handleWalletClick} style={{ color: '#007bff', marginRight: '10px', padding: '5px 15px', backgroundColor: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Wallet</button>
-          <button style={{ color: '#007bff', padding: '5px 15px', backgroundColor: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Logout</button>
+      
+      <header className="dashboard-header">
+        <div className="header-message">Welcome, {userName}</div>
+        <div className="header-buttons">
+          <button
+            className="button"
+            onClick={handleWalletClick}>
+            Wallet
+          </button>
+          <button
+            className="button">
+            Logout
+          </button>
         </div>
       </header>
 
+
       {/* Investment Overview */}
-      <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
-        <div style={{ backgroundColor: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-          <strong><h2 style={{ color: '#007bff' }}>Investment Overview</h2></strong><br />
+      <section className="investment-overview">
+        <div className="investment-card">
+          <h2 style={{ color:'#007bff'}} className="section-title"><strong>Investment Overview</strong></h2>
+          <br />
           {loading ? (
             <p>Loading user's data...</p> // Show loading state while data is being fetched
           ) : investmentData ? (
@@ -91,44 +99,47 @@ const Dashboard = ({ userName }) => {
           )}
         </div>
       </section>
-       {/* Messages */}
-          <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
+        {/* Messages */}
+        <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
             <div style={{ backgroundColor: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-              <strong><h3>Messages</h3></strong><br />
+              <strong><h3 style={{ color:'#007bff'}}>Messages</h3></strong><br />
               <p>Note: Your portfolio is performing well. Keep growing! Portfolio entries may fluctuate as not updated properly yet.</p>
             </div>
           </section>
 
-      {/* Transaction History */}
-      <section style={{ padding: '20px', backgroundColor: '#f0f8ff' }}>
-        <div style={{ backgroundColor: '#fff', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-          <strong><h3 style={{ color: '#007bff' }}>Transaction History</h3></strong><br />
 
+      {/* Transaction History */}
+      <section className="transaction-history">
+        <div className="transaction-card">
+          <h3  style={{ color:'#007bff'}} className="section-title"><strong>Transaction History</strong></h3>
+          <br />
           {loading ? (
             <p>Loading transaction history...</p> // Show loading state while transaction data is being fetched
           ) : (
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr style={{ backgroundColor: '#007bff', color: '#fff' }}>
-                  <th style={{ padding: '10px', border: '1px solid #ddd' }}>Date</th>
-                  <th style={{ padding: '10px', border: '1px solid #ddd' }}>Time</th>
-                  <th style={{ padding: '10px', border: '1px solid #ddd' }}>Type</th>
-                  <th style={{ padding: '10px', border: '1px solid #ddd' }}>Amount</th>
-                  <th style={{ padding: '10px', border: '1px solid #ddd' }}>Remark</th>
-                </tr>
-              </thead>
-              <tbody>
-                {transactionHistory.map((transaction, index) => (
-                  <tr key={index}>
-                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{transaction.Date}</td>
-                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{transaction.Time}</td>
-                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{transaction.Type}</td>
-                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>₹{transaction.Amount}</td>
-                    <td style={{ padding: '10px', border: '1px solid #ddd' }}>{transaction.Remark}</td>
+            <div className="table-wrapper">
+              <table className="transaction-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Remark</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {transactionHistory.map((transaction, index) => (
+                    <tr key={index}>
+                      <td>{transaction.Date}</td>
+                      <td>{transaction.Time}</td>
+                      <td>{transaction.Type}</td>
+                      <td>₹{transaction.Amount}</td>
+                      <td>{transaction.Remark}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </section>
