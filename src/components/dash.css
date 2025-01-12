@@ -1,0 +1,123 @@
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styles */
+  .dashboard-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .header-message {
+    font-size: 18px;
+    font-weight: bold;
+    flex: 1; /* Ensures it takes up available space */
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  /* Button container */
+  .header-buttons {
+    display: flex;
+    flex-direction: column; /* Default: Stack buttons vertically */
+    gap: 10px;
+  }
+  
+  /* Button styles */
+  .header-buttons .button {
+    color: #007bff;
+    padding: 8px 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .header-buttons .button:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.05);
+  }
+  
+  /* Header responsiveness */
+  @media (min-width: 768px) {
+    .dashboard-header {
+      flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+    }
+  
+    .header-buttons {
+      flex-direction: row; /* Align buttons horizontally for larger screens */
+      gap: 15px; /* Spacing between buttons */
+    }
+  }
+  
+  /* Section styles */
+  .investment-overview,
+  .transaction-history {
+    padding: 20px;
+    background-color: #f0f8ff;
+  }
+  
+  .investment-card,
+  .transaction-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table styles */
+  .table-wrapper {
+    overflow-x: auto; /* Add horizontal scroll for smaller screens */
+  }
+  
+  .transaction-table {
+    width: 100%;
+    min-width: 500px; /* Prevent table from shrinking below 500px */
+    border-collapse: collapse;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .transaction-table th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: left;
+  }
+  
+  /* General responsiveness */
+  @media (max-width: 480px) {
+    .header-message {
+      font-size: 16px;
+      margin-bottom: 10px; /* Add spacing below the message */
+    }
+  
+    .header-buttons .button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .investment-card,
+    .transaction-card {
+      padding: 10px;
+    }
+  
+    .transaction-table th,
+    .transaction-table td {
+      font-size: 14px;
+    }
+  }
+  
