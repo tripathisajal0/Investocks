@@ -91,6 +91,7 @@ const Form = () => {
       {/* Login Form */}
       <div className="form login">
         <div className="form-content">
+          
           <header>Login</header>
           <form
             onSubmit={(e) => {
@@ -98,6 +99,11 @@ const Form = () => {
               handleLogin();
             }}
           >
+            <div className="login-container">
+    <img src="/logo.png" alt="Logo" className="logo" />
+    {/* Existing login form code */}
+</div>
+            
             <div className="field input-field">
               <input
                 type="text"
